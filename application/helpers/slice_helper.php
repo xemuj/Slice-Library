@@ -88,11 +88,36 @@ if ( ! function_exists('app'))
 		}	
 		if (! ends_with($make, '_model')) {
 			return get_instance()->$make;
-		}
-			
+		} else
+		{
+			$a = ($params == array()) ? $make : $params ;
+			return get_instance()->$a;
+		}			
 	}
 }
 
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('model'))
+{
+	/**
+	 *  Get the available model instance
+	 *
+	 *  @param     string    $make
+	 *  @param     array     $params
+	 *  @return    mixed
+	 */
+	function model($make = NULL)
+	{
+
+		//	Special cases 'user_agent' and 'unit_test' are loaded
+		//	with diferent names
+
+
+		return app(title_case($make).'_model');
+			
+	}
+}
 // ------------------------------------------------------------------------
 
 if ( ! function_exists('array_add'))
@@ -2043,6 +2068,28 @@ if ( ! function_exists('str_random'))
 	function str_random($length = 16, $type = 'alnum')
 	{
 		return helper('string.random_string', array($type, $length));
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('int_random'))
+{
+	/**
+	 *  Create a "Random" Integer
+	 *
+	 *  @param     integer    $length
+	 *  @param     string     $type
+	 *  @return    string
+	 */
+	function int_random($length = 6, $str = FALSE){
+      $chars = ($str) ? '123456789ABCDEFGHJKLMNPQRSTUVWXYZ' : '0123456789' ;
+      $clen   = strlen( $chars )-1;
+      $id  = '';
+      for ($i = 0; $i < $length; $i++) {
+              $id .= $chars[mt_rand(0,$clen)];
+      }
+      return ($id);
 	}
 }
 
