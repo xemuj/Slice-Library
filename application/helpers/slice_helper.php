@@ -2083,7 +2083,12 @@ if ( ! function_exists('int_random'))
 	 *  @return    string
 	 */
 	function int_random($length = 6, $str = FALSE){
-      $chars = ($str) ? '123456789ABCDEFGHJKLMNPQRSTUVWXYZ' : '0123456789' ;
+		if (is_bool($str)) {
+			$chars = ($str) ? '123456789ABCDEFGHJKLMNPQRSTUVWXYZ' : '0123456789' ;
+		} else {
+			$chars = $str;
+		}
+		
       $clen   = strlen( $chars )-1;
       $id  = '';
       for ($i = 0; $i < $length; $i++) {
