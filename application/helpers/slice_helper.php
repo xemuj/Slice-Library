@@ -2189,6 +2189,38 @@ if ( ! function_exists('title_case'))
 
 // ------------------------------------------------------------------------
 
+if ( ! function_exists('upper_case'))
+{
+	/**
+	 *  Convert the given string to upper case
+	 *
+	 *  @param     string    $str
+	 *  @return    string
+	 */
+	function upper_case($str)
+	{
+		return strtoupper($str);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('lower_case'))
+{
+	/**
+	 *  Convert the given string to lower case
+	 *
+	 *  @param     string    $str
+	 *  @return    string
+	 */
+	function lower_case($str)
+	{
+		return strtolower($str);
+	}
+}
+
+// ------------------------------------------------------------------------
+
 if ( ! function_exists('trait_uses_recursive'))
 {
 	/**
